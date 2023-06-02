@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   async function register(ev) {
     ev.preventDefault();
@@ -11,9 +13,17 @@ export default function RegisterPage() {
       body: JSON.stringify({ username, password }),
       headers: { 'Content-type': 'application/json' },
     });
-    if (!response.ok) {
-      alert("Register error");
+    if (response.ok) {
+      response.json().then((userInfo) => {
+        setRedirect(true);
+      });
+    } else {
+      alert("register error");
     }
+  }
+
+  if (redirect) {
+    return <Navigate to="/" />;
   }
 
   return (

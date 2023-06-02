@@ -25,14 +25,36 @@ header {
 header a {
   text-decoration: none;
   color: inherit;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 header a.logo {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 header nav {
   display: flex;
-  gap: 24px;
+  gap: 10px;
+  text-align: center;
+}
+header span {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+header .create-row {
+  display: flex;
+  text-align: center;
+}
+header .create-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  background-color: #333;
+  padding: 10px 10px;
+  margin: 0 10px;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 div.post {
