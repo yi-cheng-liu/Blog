@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+a {
+  cursor: pointer;
+}
 body {
   color: #222;
 }
@@ -88,6 +91,7 @@ input {
 }
 
 button {
+  cursor: pointer;
   display: block;
   width: 100%;
   background-color: #555;
