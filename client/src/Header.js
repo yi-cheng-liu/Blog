@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
+import logo from "./assets/images/logo.png";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -28,7 +29,7 @@ export default function Header() {
   return (
     <header>
       <Link to="/" className="logo">
-        RayFitnessBlog
+        <img src={logo} alt="The J Blog" />
       </Link>
       <nav>
         {username && (
@@ -50,7 +51,7 @@ export default function Header() {
                     d="M12 4.5v15m7.5-7.5h-15"
                   />
                 </svg>
-                Create New Post
+                <span className="show-on-desktop">Create New Post</span>
               </Link>
             </div>
             <Link onClick={logout} to="/">
