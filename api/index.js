@@ -51,23 +51,25 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
-    const userDoc = await User.findOne({ username });
-    const passOk = bcrypt.compareSync(password, userDoc.password);
 
+    // Check if the username is correct
+    const userDoc = await User.findOne({ username });
     if (!userDoc) {
       return res.status(404).json({ error: "User not found" });
     }
 
+    // Check if the password is correct
     const passwordMatch = bcrypt.compareSync(password, userDoc.password);
     if (!passwordMatch) {
       return res.status(401).json({ error: "Invalid password" });
     }
 
     // logged in
+    const passOk = bcrypt.compareSync(password, userDoc.password);
     if (passOk) {
       jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
-        if (err) throw err;
-        res.cookie('token', token).json({
+        if (err) return res.status(403).send("Invalid token");
+        res.cookie("token", token).json({
           id: userDoc._id,
           username,
         });
@@ -80,13 +82,15 @@ app.post("/login", async (req, res) => {
   } 
 });
 
-app.get('/profile', (req, res) => { 
+app.get("/profile", (req, res) => {
   const { token } = req.cookies;
+  if (!token) return res.status(401).send("Access Denied/Unauthorized");
   jwt.verify(token, secret, {}, (err, info) => {
-    if (err) throw err;
+    if (err) return res.status(403).send("Invalid token"); 
     res.json(info);
   });
-})
+});
+
 
 app.post('/logout', (req, res) => {
   res.cookie('token', '').json('logged out');
@@ -101,7 +105,7 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
     fs.renameSync(path, newPath);
     const { token } = req.cookies;
     jwt.verify(token, secret, {}, async(err, info) => {
-      if (err) throw err;
+      if (err) return res.status(403).send("Invalid token"); 
       const { title, summary, content } = req.body;
       const postDoc = await Post.create({
         title, summary, content, cover: newPath, author:info.id,
@@ -140,7 +144,7 @@ app.put("/post", uploadMiddleware.single("file"), async (req, res) => {
 
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
-    if (err) throw err;
+    if (err) return res.status(403).send("Invalid token"); 
     const { id, title, summary, content } = req.body;
     const postDoc = await Post.findById(id);
     const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
