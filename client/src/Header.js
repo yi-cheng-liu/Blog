@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <header>
       <Link to="/" className="logo">
-        <img src={logo} alt="The J Blog" />
+        <img src={logo} alt="TechUSA" width="300"/>
       </Link>
       <nav>
         {username && (
