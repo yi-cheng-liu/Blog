@@ -1,14 +1,15 @@
 # TechUSA (MERN stack application)
+
 <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='mongodb' src='https://img.shields.io/badge/Mongodb-100000?style=for-the-badge&logo=mongodb&logoColor=white&labelColor=4DB33D&color=4DB33D'/></a>
 <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='express' src='https://img.shields.io/badge/Express-100000?style=for-the-badge&logo=express&logoColor=white&labelColor=303030&color=303030'/></a>
 <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='react' src='https://img.shields.io/badge/React-100000?style=for-the-badge&logo=react&logoColor=white&labelColor=61dbfb&color=61dbfb'/></a>
 <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='node.js' src='https://img.shields.io/badge/Node.js-100000?style=for-the-badge&logo=node.js&logoColor=white&labelColor=68A063&color=68A063'/></a>
+
 This is a frontend/backend application for writing news for tech companies. 
 
 ## Table of Contents
 - [TechUSA (MERN stack application)](#techusa-mern-stack-application)
   - [Table of Contents](#table-of-contents)
-  - [Motivation](#motivation)
   - [Features](#features)
         - [Core (MERN stack)](#core-mern-stack)
         - [Authentication \& Security](#authentication--security)
@@ -20,12 +21,9 @@ This is a frontend/backend application for writing news for tech companies.
       - [Login Page](#login-page)
   - [Contact Information](#contact-information)
 
-## Motivation
-For the current websites, news are generally written by a single compay
-
 ## Features
--  Write/ Edit post for specific companies when login with account
-- 🛏️ Register/ Login function for companies to write post for its own compnay
+-  Write/ Edit posts for specific companies when login with the account
+- 🛏️ Register/ Login function for companies to write posts for their compnay
 
 ##### Core (MERN stack)
 - [MongoDB](https://www.mongodb.com/) to store user, item, and reservation data
@@ -33,7 +31,7 @@ For the current websites, news are generally written by a single compay
 - [React](https://react.dev/) for 
 - [Nodejs](https://nodejs.org/) for server-rendered React applications
 ##### Authentication & Security
-- [bcrypt](https://www.npmjs.com/package/bcrypt) for hashing passowrd before storing, ensure secure storage of user credentials
+- [bcrypt](https://www.npmjs.com/package/bcrypt) for hashing passwords before storing, ensuring secure storage of user credentials
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) for handling JSON Web Tokens, providing a secure way to transmit data between parties as a JSON object
 - [cors](https://yarnpkg.com/package?name=cors) to enable Cross-Origin Resource Sharing, allowing the front end and back end to communicate securely
 
@@ -62,7 +60,7 @@ For the current websites, news are generally written by a single compay
    cd client
    yarn start
    ```
-   Open http://localhost:3000 with your browser to see the webstite.
+   Open http://localhost:3000 with your browser to see the website.
 
 
 ## Demo
